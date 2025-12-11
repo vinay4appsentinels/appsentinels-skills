@@ -71,7 +71,7 @@ skills/appsentinels/
 
 ```bash
 # From source
-git clone <as-mcp-cli-repo>
+git clone https://github.com/vinay4appsentinels/as-mcp-cli.git
 cd as-mcp-cli
 pip install --user .
 
