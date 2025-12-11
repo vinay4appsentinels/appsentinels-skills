@@ -49,10 +49,35 @@ as-mcp-cli auth appsentinels --force
 
 All commands use: `as-mcp-cli mcp appsentinels <command>`
 
+### IMPORTANT: Context Preservation Best Practices
+
+**Always use `--limit` (max 500)** to avoid overwhelming context:
+```bash
+api list <tenant_id> --limit 100      # Good - limited results
+api list <tenant_id>                  # Bad - may return thousands
+```
+
+**For large data dumps, write to file and analyze selectively:**
+```bash
+# Export to JSON file
+as-mcp-cli mcp appsentinels api list <tenant_id> --limit 500 --format json > /tmp/apis.json
+
+# Then read selectively using Read tool or python to analyze
+# This preserves context and allows iterative analysis
+```
+
+**Recommended limits:**
+| Command | Max Limit | Notes |
+|---------|-----------|-------|
+| `api list` | 500 | Use filters to narrow results |
+| `api tags apis` | 500 | Filter by tag first |
+| `security-events list` | 100 | Use time filters |
+| `api info` | 1 per call | Fetch individually as needed |
+
 ### Quick Start
 ```bash
 tenant all-tenants                    # List all tenants
-api list <tenant_id>                  # List APIs
+api list <tenant_id> --limit 100      # List APIs (with limit!)
 api tags list <tenant_id>             # List tags
 api info <tenant_id> <api_id>         # API details
 ```

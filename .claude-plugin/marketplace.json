@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "appsentinels",
-      "source": ".",
+      "source": "./",
       "description": "API security platform CLI (as-mcp-cli) and ATDv2 threat detection rule authoring",
       "strict": false
     }
