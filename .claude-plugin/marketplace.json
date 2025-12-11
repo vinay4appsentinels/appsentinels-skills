@@ -1,0 +1,22 @@
+{
+  "name": "appsentinels-skills",
+  "owner": {
+    "name": "Vinay Patil",
+    "email": "vinay.patil@appsentinels.ai"
+  },
+  "metadata": {
+    "description": "AppSentinels API Security Platform skills",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "appsentinels",
+      "description": "API security platform CLI (as-mcp-cli) and ATDv2 threat detection rule authoring",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/appsentinels"
+      ]
+    }
+  ]
+}
