@@ -16,24 +16,34 @@ API security platform CLI (`as-mcp-cli`) and ATDv2 threat detection rule authori
 
 ## Installation
 
-### Via Claude Code
+### Via Claude Code Plugin System
 
 ```bash
-# Add as a plugin
-claude plugins add appsentinels-skills
+# 1. Add the marketplace (from local path)
+/plugin marketplace add /path/to/appsentinels-skills
+
+# 2. Install the skill
+/plugin install appsentinels@appsentinels-skills
 ```
 
-### Manual Installation
-
-Copy the `skills/appsentinels/` folder to your Claude Code skills directory:
+### From GitHub
 
 ```bash
-# Personal skills
-cp -r skills/appsentinels ~/.claude/skills/
+# 1. Clone the repository
+git clone https://github.com/vinay4appsentinels/appsentinels-skills.git
 
-# Project skills
-cp -r skills/appsentinels .claude/skills/
+# 2. Add the marketplace
+/plugin marketplace add /path/to/appsentinels-skills
+
+# 3. Install the skill
+/plugin install appsentinels@appsentinels-skills
 ```
+
+### Verify Installation
+
+After installation, restart Claude Code and verify:
+- The skill appears in `/plugin list`
+- Plugin cache exists at `~/.claude/plugins/cache/appsentinels-skills/`
 
 ## Usage
 
