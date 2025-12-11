@@ -65,10 +65,37 @@ skills/appsentinels/
     └── rule-workflow.md        # Rule creation workflow
 ```
 
-## Requirements
+## Prerequisites
 
-- `as-mcp-cli` installed and configured
-- AppSentinels MCP server access
+### Install as-mcp-cli
+
+```bash
+# From source
+git clone <as-mcp-cli-repo>
+cd as-mcp-cli
+pip install --user .
+
+# Or via pip (if published)
+pip install as-mcp-cli
+```
+
+### Configure MCP Server
+
+```bash
+# 1. Add the AppSentinels MCP server (opens browser for OAuth)
+as-mcp-cli add appsentinels https://mcp.appsentinels.ai/mcp/sse
+
+# 2. Verify setup
+as-mcp-cli list                                    # Show configured servers
+as-mcp-cli mcp appsentinels tenant all-tenants     # Test connection
+
+# 3. Re-authenticate if token expires
+as-mcp-cli auth appsentinels --force
+```
+
+**Credentials**: Stored in `~/.claude/.credentials.json`
+
+See [references/installation.md](skills/appsentinels/references/installation.md) for detailed setup instructions.
 
 ## License
 
